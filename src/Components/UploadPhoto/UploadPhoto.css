@@ -1,0 +1,144 @@
+.deleteIconUserImage {
+  padding: 10px;
+  font-size: 59px;
+  margin: 47px 0px 0px 0px;
+}
+.outerWrapperBackButtonsUserUploadPhoto {
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.backButtonsUserUploadPhoto {
+  border: 1px solid #8c7cdb;
+  color: #8c7cdb;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.AcceptButtonsUserUploadPhoto {
+  font-size: 17px;
+  background-color: #8c7cdb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.outerWrapperTextLabelImportPhoto {
+  font-size: 14px;
+  margin-bottom: 10px;
+  display: block;
+  color: #b2b4b6;
+}
+.outerWrapperFromComputer {
+  color: #8c7cdb;
+  background-color: #fff;
+  border-color: #8c7cdb;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  padding: 9px 14px;
+  font-size: 14px;
+  line-height: 1.428571429;
+  border-radius: 5px;
+  -webkit-font-smoothing: antialiased;
+  border-color: #8c7cdb;
+}
+.outerWrapperFromComputer:hover {
+  background-color: #fff;
+  border-color: #00c091;
+  color: #00c091;
+  opacity: 1 !important;
+}
+.outerWrapperButtonColorFacebook {
+  color: #3b5998;
+  background-color: #fff;
+  border-color: #8c7cdb;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  padding: 9px 14px;
+  font-size: 14px;
+  line-height: 1.428571429;
+  border-radius: 5px;
+  -webkit-font-smoothing: antialiased;
+  border-color: #8c7cdb;
+}
+.outerWrapperButtonColorFacebook:hover {
+  border-color: #00c091;
+}
+.outerWrapperOKButtonInUploadPhoto {
+  margin-top: 12px;
+}
+.SubmitButton {
+  color: #fff !important;
+  background-color: #8c7cdb !important;
+  border-color: transparent !important;
+}
+.SubmitButton:hover {
+  color: #fff !important;
+  background-color: #624cce !important; 
+  border-color: transparent !important;
+}
+
+.outerWrapperNotesLabelModal {
+  bottom: -133px;
+  left: 0;
+  z-index: -1;
+  background-color: #e6e6e6;
+  font-size: 16px;
+  line-height: 1.428571429;
+  color: #384347;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 50px 40px 30px;
+  font-weight: 600;
+}
+.InputTypeRange {
+  width: 80%;
+  margin: 8px 0px 0px 15px;
+}
+.DeleteIconInUploadPhoto {
+  display: none;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.HoverImage:hover .DeleteIconInUploadPhoto {
+  display: flex;
+}
+.DeleteButton {
+  color: #fff !important;
+  background-color: #00c091 !important;
+  border-color: #00c091 !important;
+}
+.DeleteButton:hover {
+  color: #fff !important;
+  background-color: #008d6a !important;
+}
+.DeleteButton:focus {
+  box-shadow: none !important;
+  opacity: 0.4 !important;
+}
+.outerWrapperUserImage {
+  width: 140px;
+  height: 140px;
+}
+.UserImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.TextHolderPhoto {
+  color: #b2b4b6;
+  font-size: 18px;
+  font-weight: 400;
+}
+.paddingModal{
+  padding: 40px !important;
+}
+.WidthModalBody{
+ width: 420px;
+}
