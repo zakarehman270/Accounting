@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/Accounting/static/css/main.075c685d.css",
+    "main.js": "/Accounting/static/js/main.ea55e93f.js",
+    "static/media/accountingBackImage.jpg": "/Accounting/static/media/accountingBackImage.eb459cf9027d86aa2dc5.jpg",
+    "index.html": "/Accounting/index.html",
+    "main.075c685d.css.map": "/Accounting/static/css/main.075c685d.css.map",
+    "main.ea55e93f.js.map": "/Accounting/static/js/main.ea55e93f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.075c685d.css",
+    "static/js/main.ea55e93f.js"
+  ]
+}
