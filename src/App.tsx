@@ -15,7 +15,7 @@ function App() {
 		setShow(true);
 	}
 	return (
-		<div>
+		<div className="BodyBackgroundColor PageHeight">
 			<ModalComponent
 				show={show}
 				setShow={setShow}

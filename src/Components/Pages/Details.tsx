@@ -40,17 +40,17 @@ const Detail: React.FC<Props> = ({
 			</h1>
 			<Container>
 				<div className="d-flex justify-content-between align-items-end">
-					<div>
+					<div className="DetailUnderHeading">
 						<div className="d-flex gap-3">
-							<p>Name:</p>
+							<p className="DetailUnderHeadingWidth">Name:</p>
 							<p>{value[state.index].name}</p>
 						</div>
 						<div className="d-flex gap-3">
-							<p>Balance:</p>
+							<p className="DetailUnderHeadingWidth">Balance:</p>
 							{handlerTotalBalance()}
 						</div>
 						<div className="d-flex gap-3">
-							<p>Date:</p>
+							<p className="DetailUnderHeadingWidth">Date:</p>
 							<p>6767676</p>
 						</div>
 					</div>
@@ -78,21 +78,27 @@ const Detail: React.FC<Props> = ({
 					</div>
 				</div>
 				<div className="pt-2 pb-2 ps-4 pe-4">
-					<Table striped responsive bordered>
+					<Table responsive bordered className="OuterWrapperTable">
 						<thead>
-							<tr>
+							<tr className="tableTopHeader">
 								<th>#</th>
 								<th>Name</th>
 								<th>Loans</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody className="tableBody">
 							{value[state.index].detail?.map((item: any, index: any) => {
 								return (
 									<tr key={index}>
-										<td style={{ width: "12px" }}>{index + 1}</td>
-										<td style={{ width: "12px" }}>{item.name}</td>
-										<td style={{ width: "12px" }}>{item.balance}</td>
+										<td className="TableRow" style={{ width: "12px" }}>
+											{index + 1}
+										</td>
+										<td className="TableRow" style={{ width: "12px" }}>
+											{item.name}
+										</td>
+										<td className="TableRow" style={{ width: "12px" }}>
+											{item.balance}
+										</td>
 									</tr>
 								);
 							})}

@@ -1,7 +1,13 @@
 import React, { useState, useContext } from "react";
 import { Context } from "../../Context/Context";
 import UserEmptyImage from "../Assets/Empty.png";
-import { Button, Container, Dropdown, Table } from "react-bootstrap";
+import {
+	Button,
+	Container,
+	Dropdown,
+	Table,
+	Pagination,
+} from "react-bootstrap";
 import Header from "../Header/Header";
 import { MdDeleteForever } from "@react-icons/all-files/md/MdDeleteForever";
 import { BsPencil } from "@react-icons/all-files/bs/BsPencil";
@@ -14,7 +20,6 @@ import { tableDataProps } from "../Data/TableData";
 import { handleGetLocalStorageValue } from "../../Common/handleLocalStorageValue/getValue";
 import { Link } from "react-router-dom";
 import ActionsButtonInMainTable from "../ActionsButton";
-
 export interface Props {
 	HandlerShowModal: () => void;
 	setModalToggle: React.Dispatch<React.SetStateAction<string>>;
@@ -26,8 +31,9 @@ const Loans: React.FC<Props> = ({
 	setModalTitle,
 }: Props) => {
 	const [SearchValue, setSearchValue] = useState("");
+	const [PaginationIndex, setPaginationIndex] = useState(1);
+	const [SelectTableRows, setSelectTableRows] = useState(5);
 	const contextData = useContext(Context);
-
 	let value: tableDataProps[] = handleGetLocalStorageValue("Users");
 	if (value === null) {
 		value = [];
@@ -44,33 +50,75 @@ const Loans: React.FC<Props> = ({
 		}
 		return totalBalance;
 	}
+	function handlerFilterTableData() {
+		return value;
+	}
 	return (
 		<div>
 			<Header />
 			<h1 className="mt-5 text-center TextHolderPagesHeading">Loan</h1>
 			<Container>
-				<div className="d-flex align-items-center justify-content-between mb-2">
+				<div className="d-flex  align-items-center justify-content-between mb-2">
+					<div className="d-flex gap-2">
+						<Button
+							className="ButtonPlusUser"
+							onClick={() => {
+								HandlerShowModal();
+								setModalToggle("ModalAddUser");
+								setModalTitle("Add User");
+							}}
+						>
+							<FiUserPlus className="plusIconInTable" />
+						</Button>
+						<Dropdown>
+							<Dropdown.Toggle
+								variant="primary"
+								className="DropDownButtonInLoan"
+								id="dropdown-basic"
+							>
+								{SelectTableRows}
+							</Dropdown.Toggle>
+							<Dropdown.Menu>
+								<Dropdown.Item
+									href="#/action-1"
+									onClick={() => {
+										setSelectTableRows(5);
+									}}
+								>
+									5
+								</Dropdown.Item>
+								<Dropdown.Item
+									href="#/action-2"
+									onClick={() => {
+										setSelectTableRows(10);
+									}}
+								>
+									10
+								</Dropdown.Item>
+								<Dropdown.Item
+									href="#/action-3"
+									onClick={() => {
+										setSelectTableRows(15);
+									}}
+								>
+									15
+								</Dropdown.Item>
+							</Dropdown.Menu>
+						</Dropdown>
+					</div>
+
 					<input
 						type="text"
 						placeholder="Searching.."
+						className="inputSearchBox"
 						onChange={(e) => {
 							setSearchValue(e.target.value);
 						}}
 					/>
-					<Button
-						className="ButtonPlusUser"
-						onClick={() => {
-							HandlerShowModal();
-							setModalToggle("ModalAddUser");
-							setModalTitle("Add User");
-						}}
-					>
-						<FiUserPlus className="plusIconInTable" />
-					</Button>
 				</div>
-				<Table striped responsive bordered>
+				<Table responsive bordered table-bordered className="OuterWrapperTable">
 					<thead>
-						<tr>
+						<tr className="tableTopHeader">
 							<th>#</th>
 							<th>Pic</th>
 							<th>Name</th>
@@ -79,8 +127,8 @@ const Loans: React.FC<Props> = ({
 							<th>Actions</th>
 						</tr>
 					</thead>
-					<tbody>
-						{value
+					<tbody className="tableBody">
+						{handlerFilterTableData()
 							.filter((val) => {
 								if (SearchValue === "") {
 									return val;
@@ -93,8 +141,8 @@ const Loans: React.FC<Props> = ({
 							.map((item, index) => {
 								return (
 									<tr key={index}>
-										<td className="TableContentWidth">{index + 1}</td>
-										<td className="TableContentWidth">
+										<td className="TableContentWidth TableRow">{index + 1}</td>
+										<td className="TableContentWidth TableRow">
 											<div className={`position-relative HoverApplicantImage`}>
 												<img
 													src={item.photo === "" ? UserEmptyImage : item.photo}
@@ -128,10 +176,12 @@ const Loans: React.FC<Props> = ({
 												</div>
 											</div>
 										</td>
-										<td>{item.name}</td>
-										<td>{item.contact}</td>
-										<td>{handlerTotalBalance(item.detail)}</td>
-										<td className="outerWrapperActionsTable">
+										<td className="TableRow">{item.name}</td>
+										<td className="TableRow">{item.contact}</td>
+										<td className="TableRow">
+											{handlerTotalBalance(item.detail)}
+										</td>
+										<td className="outerWrapperActionsTable TableRow">
 											<div className="ActionsButtonDisplayInFullScreen">
 												<ActionsButtonInMainTable
 													item={item}
@@ -164,6 +214,48 @@ const Loans: React.FC<Props> = ({
 							})}
 					</tbody>
 				</Table>
+				<Pagination size={"lg"}>
+					<Pagination.First
+						onClick={() => {
+							setPaginationIndex(0);
+						}}
+					/>
+					<Pagination.Prev
+						onClick={() => {
+							if (PaginationIndex > 0) {
+								setPaginationIndex(PaginationIndex - 1);
+							}
+						}}
+					/>
+					{[1, 1, 1, 1, 1, 1, 1, 1, 1].map((item, index) => {
+						let selectedIndex = false;
+						if (index === PaginationIndex) {
+							selectedIndex = true;
+						}
+						return (
+							<Pagination.Item
+								active={selectedIndex}
+								onClick={() => {
+									setPaginationIndex(index);
+								}}
+							>
+								{index + 1}
+							</Pagination.Item>
+						);
+					})}
+					<Pagination.Next
+						onClick={() => {
+							if (PaginationIndex != 8) {
+								setPaginationIndex(PaginationIndex + 1);
+							}
+						}}
+					/>
+					<Pagination.Last
+						onClick={() => {
+							setPaginationIndex(8);
+						}}
+					/>
+				</Pagination>
 			</Container>
 		</div>
 	);
